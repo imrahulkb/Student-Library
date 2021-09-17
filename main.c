@@ -105,7 +105,61 @@ int show_reco()  //2nd function
     fclose(xyz);
 }
 
-int file_info()
+
+int del_reco()      //3rd_funtion_other_than_main
+{
+  int a;
+  char n[20],cho1;
+  struct book x;
+  FILE *xyz;
+  FILE *xyz1;
+  if(xyz=NULL)
+  {
+    printf("File not found");
+    getch();
+    return 0;
+  }
+  
+  xyz1=fopen("temp1.txt","wb+");
+  
+    if(xyz1=NULL)
+  {
+    printf("File not found");
+    getch();
+    return 0;
+  }
+  printf("Enter a book name you want to delete");
+  scanf("%s",&n);
+  //rewind(xyz);
+ while(!feof(xyz))
+ {
+   fread(&x,sizof(x),1,xyz1);
+   if(feof(xyz))
+     break;
+   if(strcmp(x.name,n)!=0)
+   {
+     fwrite(&x,sizof(x),1,xyz1);
+   //printf("*");
+   }
+ }
+  fclose(xyz);
+  fclose(xyz1);
+  remove("dkte.txt");
+  remove("temp1.txt","dkte.txt");
+  //
+
+}
+int list_reco()
+{
+  struct book x;
+  int a;
+  char cho;
+  FILE *xyz;
+  xyz=fopen("dkte1.txt","rb+");
+  printf("===========================================================================================");
+  
+
+int file_info()          //last_funtion_other_than_main
 {
   int file_size, tot_reco;
   struct book x;
